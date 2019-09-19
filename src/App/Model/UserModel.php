@@ -11,14 +11,9 @@ use \Exception;
 
 class UserModel extends AbstractModel {
 
-	/*public function create($firstname,$lastname,$email,$password,){
-		$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-		$sql='INSERT INTO user(firstname,lastname,email,password,createdAt,avatar) VALUES (?,?,?,?,NOW(),?)';
-		$this->db->queryAction($sql,[$firstname,$lastname,$email,$hashedPassword,$avatar]);
-	}
-*/
+
 	// Ajouter un utilisateur, enregistrer ses infos dans la BDD
-	public function create($lastname, $firstname, $email, $password,$avatar) {
+	public function create($firstname, $lastname, $email, $password,$avatar) {
 		
 
 		// Vérifier que l'email n'existe pas

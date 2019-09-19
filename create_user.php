@@ -21,10 +21,15 @@ if(!empty($_POST)){
     //$fs->searchFolder($folders);
     // dump($svg);
     $fs->write('uploads/avatars/'.$filename.'.svg',$svg);
-
+    dump($_POST);
     $userModel= new UserModel();
-
-    $userModel->create($_POST['firstname'],$_POST['lastname'],$_POST['email'],$_POST['password'],$filename);
+    try{
+        $userModel->create($_POST['firstname'],$_POST['lastname'],$_POST['email'],$_POST['password'],$filename);
+    }catch(Exeption $e){
+        dump($e->getMessage());
+        die;
+    }
+    
 
 }
 
