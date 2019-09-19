@@ -1,0 +1,33 @@
+<?php
+include 'vendor/autoload.php';
+
+use App\Model\UserModel;
+use App\Service\Avatar\SvgAvatarFactory;
+use App\Service\Helpers\FileSystemHelper;
+
+
+
+//dump($_POST);
+if(!empty($_POST)){
+    $folders=['uploads','avatars'];
+
+    $svg=SvgAvatarFactory::getAvatar(3,7);
+    //var_dump($svg);
+
+    $filename=sha1(uniqid(rand(),true));
+
+    $fs=new FileSystemHelper();
+
+    //$fs->searchFolder($folders);
+    // dump($svg);
+    $fs->write('uploads/avatars/'.$filename.'.svg',$svg);
+
+    $userModel= new UserModel();
+
+    $userModel->create($_POST['firstname'],$_POST['lastname'],$_POST['email'],$_POST['password'],$filename);
+
+}
+
+
+
+include 'template/create_user.phtml';
