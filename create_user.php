@@ -1,30 +1,43 @@
 <?php
 include 'vendor/autoload.php';
 
+use Core\DB\Database;
 use App\Model\UserModel;
 use App\Service\Avatar\SvgAvatarFactory;
 use App\Service\Helpers\FileSystemHelper;
+use App\Entity\User;
 
-
+//const DB_HOST = 'localhost';
+//const DB_NAME = 'avatarpixel';
+//const DB_USER = 'root';
+//const DB_PASSWORD = '';
 
 //dump($_POST);
 if(!empty($_POST)){
+
+    //connection a la base de données par injection
+    $pdo = new PDO ('mysql:host=localhost;dbname=avatarpixel','root', '', [PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION]);
+    $pdo->exec('SET NAMES UTF8');
+    $db=new Database($pdo);
+
+    //on indique le chemin des fichier pour stocker le fichier svg
     $folders=['uploads','avatars'];
 
     $svg=SvgAvatarFactory::getAvatar(3,7);
-    //var_dump($svg);
 
     $filename=sha1(uniqid(rand(),true));
 
     $fs=new FileSystemHelper();
 
-    //$fs->searchFolder($folders);
-    // dump($svg);
+
     $fs->write('uploads/avatars/'.$filename.'.svg',$svg);
-    dump($_POST);
-    $userModel= new UserModel();
+
+    $userModel= new UserModel($db);
     try{
-        $userModel->create($_POST['firstname'],$_POST['lastname'],$_POST['email'],$_POST['password'],$filename);
+        $user=new User($_POST);
+        $user->setAvatar($filename);
+        $userModel->insert($user);
+
     }catch(Exeption $e){
         dump($e->getMessage());
         die;
