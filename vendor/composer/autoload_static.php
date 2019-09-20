@@ -16,6 +16,7 @@ class ComposerStaticInit36c2a94b5373bb57a80a42c75944670a
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\VarDumper\\' => 28,
+            'Symfony\\Component\\Dotenv\\' => 25,
         ),
         'C' => 
         array (
@@ -35,6 +36,10 @@ class ComposerStaticInit36c2a94b5373bb57a80a42c75944670a
         'Symfony\\Component\\VarDumper\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
+        ),
+        'Symfony\\Component\\Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/dotenv',
         ),
         'Core\\' => 
         array (

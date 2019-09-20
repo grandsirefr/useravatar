@@ -2,6 +2,7 @@
 
 namespace Core\DB;
 use \PDO;
+
 class Database {
 
 	private $pdo;
