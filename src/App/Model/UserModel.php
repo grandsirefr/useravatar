@@ -7,20 +7,23 @@ use Core\DB\AbstractModel;
 use \Exception;
 use App\Entity\User;
 
-// include_once 'Database.php';
-// include_once 'AbstractModel.php';
 
 class UserModel extends AbstractModel {
 
+    //protected $db;
 
-	// Ajouter un utilisateur, enregistrer ses infos dans la BDD
+    /*public function __construct(Database $db)
+    {
+        $this->db=$db;
+    }*/
+
+    // Ajouter un utilisateur, enregistrer ses infos dans la BDD
 	public function insert(User $user) {
 		dump($user);
 		$newuser=$this->getUserByEmail($user->getemail());
 
 		if($newuser){
 			throw new Exception("cet email existe déja", 1);
-			
 		}
 		//dump($user);
 		// Vérifier que l'email n'existe pa
