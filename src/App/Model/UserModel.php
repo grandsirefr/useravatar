@@ -18,6 +18,10 @@ class UserModel extends AbstractModel {
     }*/
 
     // Ajouter un utilisateur, enregistrer ses infos dans la BDD
+    /**
+     * @param User $user
+     * @throws Exception
+     */
 	public function insert(User $user) {
 		dump($user);
 		$newuser=$this->getUserByEmail($user->getemail());

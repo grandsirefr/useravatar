@@ -9,6 +9,11 @@ return array(
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Component\\VarDumper\\' => array($vendorDir . '/symfony/var-dumper'),
     'Symfony\\Component\\Dotenv\\' => array($vendorDir . '/symfony/dotenv'),
+    'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
+    'PhpDocReader\\' => array($vendorDir . '/php-di/phpdoc-reader/src/PhpDocReader'),
+    'Invoker\\' => array($vendorDir . '/php-di/invoker/src'),
+    'Interop\\Container\\' => array($vendorDir . '/container-interop/container-interop/src/Interop/Container'),
+    'DI\\' => array($vendorDir . '/php-di/php-di/src/DI'),
     'Core\\' => array($baseDir . '/src/Core'),
     'App\\' => array($baseDir . '/src/App'),
 );

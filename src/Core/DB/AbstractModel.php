@@ -9,7 +9,7 @@ use Core\DB\Database;
 abstract class AbstractModel {
 	protected $db;
 
-	public function __construct(Database $db) {
+    public function __construct(DatabaseInterface $db) {
 		$this->db = $db;
 	}
 }

@@ -3,7 +3,8 @@
 namespace Core\DB;
 use \PDO;
 
-class Database {
+
+class Database implements DatabaseInterface {
 
 	private $pdo;
 
@@ -19,7 +20,7 @@ class Database {
 		return $query->fetchAll();
 	}
 
-	//
+
 	function queryOne ($sql, array $params = []) {
 
 		$query = $this->executeQuery($sql, $params);
